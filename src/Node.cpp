@@ -5,6 +5,13 @@
 #include "Node.h"
 #include "Data.h"
 
+
+Node::Node() {
+    this->data = nullptr;
+    this->next = nullptr;
+    this->prev = nullptr;
+}
+
 Node::Node(Data* data) {
     this->data = data;
     this->next = nullptr;

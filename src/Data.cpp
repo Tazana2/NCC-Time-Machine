@@ -19,7 +19,13 @@ Data::Data() {
         this->scientist = "Rosen";
     }
     this->num = numDist(mt);
-    this->event = "N";
+    this->event = "Event N";
+}
+
+Data::Data(int num, std::string scientist) {
+    this->num = num;
+    this->scientist = std::move(scientist);
+    this->event = "Event N";
 }
 
 int Data::getNum() const {

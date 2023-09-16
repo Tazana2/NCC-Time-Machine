@@ -13,6 +13,7 @@ protected:
     std::string event;
 public:
     Data();
+    Data(int num, std::string scientist);
     int getNum() const;
     std::string getScientist();
     std::string getEvent();
@@ -20,7 +21,6 @@ public:
     void setScientist(std::string scientist);
     void setEvent(std::string event);
     std::string toString();
-
     bool isPrime() const;
 };
 

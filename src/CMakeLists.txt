@@ -11,4 +11,6 @@ add_executable(MaquinaTiempo main.cpp
         Data.cpp
         Data.cpp
         List.cpp
-        List.h)
+        List.h
+        Utilities.cpp
+        Utilities.h)

@@ -10,12 +10,13 @@ class List {
 protected:
     Node *head;
     Node *tail;
-    std::string event;
 public:
     List();
     void add();
+    void add(Node* node);
     void showList();
-    void searchForEvent();
+    Node* getHead() const;
+    Node* getTail() const;
 };
 
 

@@ -12,7 +12,8 @@ protected:
     Node* next;
     Node* prev;
 public:
-    Node(Data* data);
+    Node();
+    explicit Node(Data* data);
     Data* getData() const;
     // void setData(Data* data);
     Node* getNext() const;
