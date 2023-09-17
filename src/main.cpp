@@ -12,6 +12,7 @@ int main() {
     Utilities::checkLastEvent(list);
     list->showList();
     cout << endl;
+    cout << "hola" << endl;
     list->add(new Node(new Data(10, "Rosen")));
     Utilities::checkLastEvent(list);
     list->showList();
@@ -45,6 +46,7 @@ int main() {
     list->showList();
     cout << endl;
     **/
+
     std::random_device rd;
     std::mt19937 mt(rd());
     std::uniform_int_distribution<int> dist(3, 22);
@@ -55,8 +57,9 @@ int main() {
         Utilities::checkLastEvent(list);
     }
 
+
     list->showList();
-    cout << "Hubo " << num << " nodos en la lista" << endl;
+    // cout << "Hubo " << num << " nodos en la lista" << endl;
     Utilities::countEvents(list);
     return 0;
 }
