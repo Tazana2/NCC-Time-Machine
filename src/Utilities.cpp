@@ -9,9 +9,6 @@
 
 using namespace std;
 
-bool Utilities::eventA = false;
-bool Utilities::eventB = false;
-bool Utilities::eventC = false;
 vector<Node> Utilities::nodesEventA;
 
 bool Utilities::isCoPrime(int a, int b) {
@@ -65,14 +62,44 @@ bool Utilities::searchForEventC(List *list) {
 
 void Utilities::checkLastEvent(List* list) {
     if (Utilities::searchForEventC(list)) {
-        if (list->getTail()->getData()->isPrime()) {
-            cout << "Hubo un evento C y además es primo: " << list->getTail()->toString() << endl;
+        if (list->getTail()->getData()->isPrime()) { //Entregar datos
+            for (Node node : Utilities::nodesEventA) {
+                if (list->getTail()->getData()->getScientist() == "Albert") {
+                    cout << "Albert se entregó datos a si mismo" << endl;
+                } else if (list->getTail()->getData()->getScientist() == "Rosen" && node.getData()->getScientist() == "Albert") {
+                    cout << "Rosen entregó los datos a Albert" << endl;
+                }
+            }
         } else {
-            cout << "Hubo un evento C pero el dato del nodo no es primo : " << list->getTail()->toString() << endl;
+            for (Node node : Utilities::nodesEventA){ //Observar
+                if (Utilities::isCoPrime(list->getTail()->getData()->getNum(), node.getData()->getNum())) {
+                    if (list->getTail()->getData()->getScientist() == "Albert") {
+                        cout << "Albert viajó pero solo pudo observar" << endl;
+                    } else if (list->getTail()->getData()->getScientist() == "Rosen") {
+                        cout << "Rosen viajó pero solo pudo observar" << endl;
+                    }
+                }
+            }
         }
         return;
     }
     Utilities::searchForEventA(list);
     Utilities::searchForEventB(list);
 
+
+}
+void Utilities::countEvents(List* list) {
+    int contadorA = 0;
+    int contadorB = 0;
+    Node* temp = list->getHead();
+    while (temp != nullptr) {
+        if (temp->getData()->getEvent() == "Event A") {
+            contadorA++;
+        } else if (temp->getData()->getEvent() == "Event B") {
+            contadorB++;
+        }
+        temp = temp->getNext();
+    }
+    cout << "Eventos A: " << contadorA << endl;
+    cout << "Eventos B: " << contadorB << endl;
 }

@@ -12,12 +12,12 @@ using namespace std;
 
 class Utilities {
 public:
-    static bool eventA, eventB, eventC;
     static void searchForEventA(List* list);
     static void searchForEventB(List* list);
     static bool searchForEventC(List* list);
 
     static void checkLastEvent(List* list);
+    static void countEvents(List* list);
     static bool isCoPrime(int a, int b);
 
     static vector<Node> nodesEventA;
