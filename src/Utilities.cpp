@@ -23,8 +23,6 @@ bool Utilities::isCoPrime(int a, int b) {
     return (a == 1);
 }
 
-
-
 void Utilities::countEvents(List* list) {
     int contadorA = 0, contadorB = 0;
     Node* temp = list->getHead();

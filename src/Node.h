@@ -21,7 +21,6 @@ public:
     Node* getPrev() const;
     void setPrev(Node* pNode);
     std::string toString();
-    std::string toString2();
 };
 
 

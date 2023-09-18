@@ -56,10 +56,8 @@ int main() {
         list->add();
         Utilities::checkLastEvent(list);
     }
-
-
+    
     list->showList();
-    // cout << "Hubo " << num << " nodos en la lista" << endl;
     Utilities::countEvents(list);
     return 0;
 }
