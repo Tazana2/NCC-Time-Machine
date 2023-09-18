@@ -6,6 +6,7 @@
 #include "List.h"
 #include "Node.h"
 #include "Data.h"
+#include "string"
 
 using namespace std;
 
@@ -22,18 +23,18 @@ bool Utilities::isCoPrime(int a, int b) {
     return (a == 1);
 }
 
+
+
 void Utilities::countEvents(List* list) {
-    int contadorA = 0, contadorB = 0, contadorC = 0;
+    int contadorA = 0, contadorB = 0;
     Node* temp = list->getHead();
     while (temp != nullptr) {
         contadorA += (temp->getData()->getEvent() == "Event A");
         contadorB += (temp->getData()->getEvent() == "Event B");
-        contadorC += (temp->getData()->getEvent() == "Event C");
         temp = temp->getNext();
     }
     cout << "Eventos A: " << contadorA << endl;
     cout << "Eventos B: " << contadorB << endl;
-    cout << "Eventos C: " << contadorC << endl;
 }
 
 void Utilities::searchForEventA(List *list) {
@@ -89,13 +90,24 @@ void Utilities::searchForEventB(List *list) {
 }
 
 bool Utilities::searchForEventC(List *list) {
+    Node *nodeB = nullptr;
+    Node *nodeC = nullptr;
     Node *tail = list->getTail();
     Node *temp = list->getTail()->getPrev();
+    vector<Node> nodesEventACopy = Utilities::nodesEventA;
     while (temp != nullptr) {
         if (temp->getData()->getEvent() == "Event B") {
-            for (Node node : Utilities::nodesEventA) {
-                if (Utilities::isCoPrime(tail->getData()->getNum(), node.getData()->getNum())) {
+            nodeB = temp;
+            for (auto it = nodesEventACopy.begin(); it != nodesEventACopy.end(); ++it) {
+                Node *nodeA = &(*it);
+                if (Utilities::isCoPrime(tail->getData()->getNum(), nodeA->getData()->getNum())) {
+                    nodeC = tail;
                     tail->getData()->setEvent("Event C");
+                    nodesEventACopy.erase(it);
+                    if (nodeA != nullptr && nodeB != nullptr && nodeC != nullptr) {
+                        cout << "Ocurrio una singularidad con los nodos: " << endl;
+                        cout << nodeA->toString2() << " -> " << nodeB->toString2() << nodeC->toString2() << "\n" << endl;
+                    }
                     return true;
                 }
             }
@@ -112,10 +124,10 @@ void Utilities::checkLastEvent(List* list) {
         if (list->getTail()->getData()->isPrime()) { //Entregar datos
             for (Node node : Utilities::nodesEventA) {
                 if (list->getTail()->getData()->getScientist() == "Albert") {
-                    cout << "Albert se entregó datos a si mismo" << endl;
+                    cout << "Albert se entrego datos a si mismo" << "\n" << endl;
                     return;
                 } else if (list->getTail()->getData()->getScientist() == "Rosen" && node.getData()->getScientist() == "Albert") {
-                    cout << "Rosen entregó los datos a Albert" << endl;
+                    cout << "Rosen entrego los datos a Albert" << "\n" << endl;
                     return;
                 }
             }
@@ -123,10 +135,10 @@ void Utilities::checkLastEvent(List* list) {
             for (Node node : Utilities::nodesEventA){ //Observar
                 if (Utilities::isCoPrime(list->getTail()->getData()->getNum(), node.getData()->getNum())) {
                     if (list->getTail()->getData()->getScientist() == "Albert") {
-                        cout << "Albert viajó pero solo pudo observar" << endl;
+                        cout << "Albert viajo pero solo pudo observar" << "\n" << endl;
                         return;
                     } else if (list->getTail()->getData()->getScientist() == "Rosen") {
-                        cout << "Rosen viajó pero solo pudo observar" << endl;
+                        cout << "Rosen viajo pero solo pudo observar" << "\n" << endl;
                         return;
                     }
                 }
