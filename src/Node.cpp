@@ -46,3 +46,12 @@ std::string Node::toString() {
     }
     return this->data->toString()+" -> ";
 }
+
+std::string Node::toString2() {
+    if (this->data == nullptr) {
+        return "null";
+    } else if (this->next == nullptr) {
+        return this->data->toString() ;
+    }
+    return this->data->toString();
+}

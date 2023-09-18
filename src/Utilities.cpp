@@ -104,7 +104,7 @@ bool Utilities::searchForEventC(List *list) {
                     nodesEventACopy.erase(it);
                     if (nodeA != nullptr && nodeB != nullptr && nodeC != nullptr) {
                         cout << "Ocurrio una singularidad con los nodos: " << endl;
-                        cout << nodeA->toString2() << " -> " << nodeB->toString2() << nodeC->toString2() << "\n" << endl;
+                        cout << nodeA->toString2() << " -> " << nodeB->toString2() << " -> " <<nodeC->toString2() << "\n" << endl;
                     }
                     return true;
                 }
